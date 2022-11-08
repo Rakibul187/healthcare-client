@@ -27,8 +27,8 @@ const Login = () => {
         <div>
             <div className="hero w-full my-20 sm:mx-auto">
                 <div className="hero-content grid  md:grid-cols-2 flex-col lg:flex-row">
-                    <div className="text-center lg:text-left mb-20">
-                        <img className='w-3/4' src={img} alt="" />
+                    <div className="text-center lg:text-left">
+                        <img className='' src={img} alt="" />
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20">
                         <h1 className="text-5xl text-center font-bold">Login</h1>
