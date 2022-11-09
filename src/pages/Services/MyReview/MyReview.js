@@ -5,9 +5,6 @@ const MyReview = () => {
     const { user } = useContext(AuthContext)
     const [review, setReview] = useState([])
 
-    console.log(review)
-    const { description, img, rating, reviewerName, serviceName } = review;
-
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?email=${user?.email}`)
             .then(res => res.json())
@@ -17,7 +14,7 @@ const MyReview = () => {
         <div style={{ height: "100vh" }}>
             {review.length > 0 ?
                 <>
-                    <h1 className='text-3xl font-bold mt-20 mb-5'>Your Previous Review</h1>
+                    <h1 className='text-3xl font-bold mt-20 mb-5 text-orange-400'>Your Previous Review</h1>
                     <div>
                         <div className='grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-5'>
                             {review.map(rev =>

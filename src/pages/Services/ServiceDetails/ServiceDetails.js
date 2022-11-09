@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const ServiceDetails = () => {
 
+    const [reviews, setReviews] = useState([])
     const { user } = useContext(AuthContext)
+
     const service = useLoaderData()
     const { description, name, img, price, _id, rating } = service;
 
-    console.log(service)
+    // console.log(service)
 
 
     const handleReview = event => {
@@ -50,21 +52,23 @@ const ServiceDetails = () => {
                 console.log(data)
                 if (data.acknowledged) {
                     alert('Review placed successfully')
-                    // form.reset();
-
+                    form.reset();
                 }
             })
             .catch(er => console.error(er));
-
-
     }
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/reviews/${_id}`)
+            .then(res => res.json())
+            .then(data => setReviews(data))
+    }, [_id])
 
-
+    console.log(reviews)
     return (
-        <div>
+        <div style={{ minHeight: "100vh" }} className='grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2'>
 
-            <div className="card w-96 bg-base-100 shadow-lg p-3 my-15">
+            <div style={{ height: '650px' }} className="card w-96 bg-base-100 shadow-lg p-3 my-16">
                 <div >
                     <figure style={{ height: "250px" }}><img src={img} className="rounded" alt="Shoes" /></figure>
                 </div>
@@ -81,21 +85,51 @@ const ServiceDetails = () => {
                 </div>
             </div>
 
-
-
             <div>
-                <form onSubmit={handleReview} className='mt-24 w-2/3 mx-auto'>
-                    <h2 className="text-4xl my-3 text-center text-gray-500">Tell Us Which Service Do You Want ?</h2>
-                    <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
-                        <input name="name" type="text" placeholder="Your Name" className="input input-ghost w-full  input-bordered" required />
-                        <input name="email" type="text" placeholder='Your Email' defaultValue={user?.email} readOnly className="input input-ghost w-full  input-bordered" />
-                        <input name="URL" type="url" placeholder="Your Image" className="input input-ghost w-full  input-bordered" required />
-                        <input name="rating" type="text" placeholder="Rating" className="input input-ghost w-full  input-bordered" required />
-                    </div>
-                    <textarea name="message" className="textarea textarea-bordered h-24 mt-2 w-full" placeholder="About Service" required></textarea>
+                <div>
+                    {
+                        user.uid ?
 
-                    <input className='btn btn-warning ' type="submit" value="Place Your Review" />
-                </form>
+                            <form onSubmit={handleReview} className='mt-16 w-2/3 mx-auto'>
+                                <h2 className="text-4xl my-3 text-center text-gray-500"> Please Add a Review</h2>
+                                <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
+                                    <input name="name" type="text" placeholder="Your Name" className="input input-ghost w-full  input-bordered" required />
+                                    <input name="email" type="text" placeholder='Your Email' defaultValue={user?.email} readOnly className="input input-ghost w-full  input-bordered" />
+                                    <input name="URL" type="url" placeholder="Your Image" className="input input-ghost w-full  input-bordered" required />
+                                    <input name="rating" type="text" placeholder="Rating" className="input input-ghost w-full  input-bordered" required />
+                                </div>
+                                <textarea name="message" className="textarea textarea-bordered h-24 mt-2 w-full" placeholder="About Service" required></textarea>
+
+                                <input className='btn btn-warning ' type="submit" value="submit" />
+                            </form>
+
+
+                            :
+                            <h2 className='text-3xl font-bold '>If you want to add a review please<Link>Login</Link></h2>
+                    }
+                </div>
+
+                <div>
+                    <h1 className='text-3xl font-bold mt-10 mb-5 text-orange-400 '>Previous Review</h1>
+                    <div>
+                        <div className='grid gap-5 mb-20'>
+                            {reviews.map(rev =>
+                                <div key={rev._id}>
+                                    <div className='border border-lg rounded-xl p-3'>
+                                        <div className='flex justify-items-center gap-2'>
+                                            <img style={{ width: '35px', height: '35px', borderRadius: '17px' }} src={rev.img} alt="" />
+                                            <span className='font-semibold'>{rev.reviewerName}</span>
+                                        </div>
+                                        <h2 className='text-xl font-semibold'>{rev.serviceName}</h2>
+                                        <p className=''>{rev.description}</p>
+                                        <p className='text-orange-500'>Rating: {rev.rating}</p>
+                                    </div>
+                                </div>)}
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     );
