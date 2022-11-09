@@ -88,7 +88,7 @@ const ServiceDetails = () => {
             <div>
                 <div>
                     {
-                        user.uid ?
+                        user?.uid ?
 
                             <form onSubmit={handleReview} className='mt-16 w-2/3 mx-auto'>
                                 <h2 className="text-4xl my-3 text-center text-gray-500"> Please Add a Review</h2>
@@ -105,7 +105,7 @@ const ServiceDetails = () => {
 
 
                             :
-                            <h2 className='text-3xl font-bold '>If you want to add a review please<Link>Login</Link></h2>
+                            <h2 className='text-2xl font-bold  mt-16'>If you want to add a review please <Link className='underline text-lg text-primary' to="/login">Login</Link></h2>
                     }
                 </div>
 
