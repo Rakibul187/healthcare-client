@@ -10,6 +10,28 @@ const MyReview = () => {
             .then(res => res.json())
             .then(data => setReview(data))
     }, [user?.email])
+
+    const handleDelete = id => {
+        console.log(id)
+        const proceed = window.confirm("Are you sure you want to delete this review?")
+        if (proceed) {
+            fetch(`http://localhost:5000/reviews/${id}`, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+
+                    if (data.deletedCount > 0) {
+                        alert('deleted successfully');
+                        const remaining = review.filter(rev => rev._id !== id);
+                        setReview(remaining);
+                    }
+                }
+                )
+        }
+    }
+
     return (
         <div style={{ height: "100vh" }}>
             {review.length > 0 ?
@@ -26,7 +48,13 @@ const MyReview = () => {
                                         </div>
                                         <h2 className='text-xl font-semibold'>{rev.serviceName}</h2>
                                         <p className=''>{rev.description}</p>
-                                        <p className='text-orange-500'>Rating: {rev.rating}</p>
+                                        <div className='flex justify-between items-center mt-2'>
+                                            <p className='text-orange-500'>Rating: {rev.rating}</p>
+                                            <div>
+                                                <button className="btn mr-2 btn-outline btn-warning">Update</button>
+                                                <button onClick={() => handleDelete(rev?._id)} className="btn btn-outline btn-error">Remove</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>)}
                         </div>
