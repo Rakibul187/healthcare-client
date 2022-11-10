@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const MyReview = () => {
@@ -23,7 +24,7 @@ const MyReview = () => {
                     console.log(data)
 
                     if (data.deletedCount > 0) {
-                        alert('deleted successfully');
+                        toast.success('Review Deleted successfully');
                         const remaining = review.filter(rev => rev._id !== id);
                         setReview(remaining);
                     }
@@ -33,7 +34,7 @@ const MyReview = () => {
     }
 
     return (
-        <div style={{ height: "100vh" }}>
+        <div style={{ minHeight: "100vh" }}>
             {review.length > 0 ?
                 <>
                     <h1 className='text-3xl font-bold mt-20 mb-5 text-orange-400'>Your Previous Review</h1>
