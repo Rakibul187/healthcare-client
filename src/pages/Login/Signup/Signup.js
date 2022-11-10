@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../../assets/login/login5.webp'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
@@ -22,6 +23,7 @@ const Signup = () => {
                 const user = result.user;
                 console.log(user)
                 form.reset()
+                toast.success("Sign Up Succesfully")
                 navigate(from, { replace: true })
             })
             .catch(er => console.error(er))

@@ -2,9 +2,14 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../../assets/login/login5.webp'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import { FaGoogle } from "react-icons/fa";
+import toast from 'react-hot-toast';
+
+
+
 const Login = () => {
 
-    const { login } = useContext(AuthContext);
+    const { login, googleSignIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || "/";
@@ -21,12 +26,23 @@ const Login = () => {
                 const user = result.user;
                 console.log(user)
                 form.reset()
+                toast.success("Login Succesfully")
                 navigate(from, { replace: true })
             })
             .catch(e => console.error(e))
 
     }
 
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                toast.success("Login Succesfully")
+                navigate(from, { replace: true })
+            })
+            .catch(e => console.error(e))
+    }
     return (
         <div>
             <div className="hero w-full my-20 sm:mx-auto">
@@ -51,6 +67,10 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary" type="submit" value="Login" />
+                            </div>
+                            <div>
+                                <p className='text-center font-semibold'>Or LogIn With</p>
+                                <button onClick={handleGoogleSignIn} className="btn btn-outline btn-info mt-2 w-full"><FaGoogle /></button>
                             </div>
                         </form>
                         <p className='text-center'>New to HealthCare <Link className='text-orange-600 font-bold' to="/signup">Sign Up</Link> </p>
