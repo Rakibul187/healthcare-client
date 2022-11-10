@@ -3,9 +3,12 @@ import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../../assets/login/login5.webp'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTittle';
 
 
 const Signup = () => {
+
+    useTitle("Signup")
     const { createUser } = useContext(AuthContext)
 
     const location = useLocation();

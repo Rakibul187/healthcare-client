@@ -1,8 +1,11 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { FaArrowRight } from 'react-icons/fa';
+import useTitle from '../../hooks/useTittle';
 
 const AddService = () => {
 
+    useTitle('Add-Service')
     const handlePlaceOrder = event => {
         event.preventDefault();
         const form = event.target;
@@ -28,7 +31,7 @@ const AddService = () => {
 
         // }
 
-        fetch('http://localhost:5000/services', {
+        fetch('https://healthcare-server.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -39,7 +42,7 @@ const AddService = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    alert('Order placed successfully')
+                    toast.success('Service Added Successfully')
                     form.reset();
 
                 }

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import useTitle from '../../hooks/useTittle';
 import ServiceItem from './ServiceItem/ServiceItem';
 
 const Services = () => {
     const [services, setServices] = useState([])
 
+    useTitle('Services')
+
     useEffect(() => {
-        fetch("http://localhost:5000/services")
+        fetch("https://healthcare-server.vercel.app/services")
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])

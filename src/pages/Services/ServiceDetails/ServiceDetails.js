@@ -2,8 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTittle';
 
 const ServiceDetails = () => {
+
+    useTitle('Service-details -& -review')
 
     const [reviews, setReviews] = useState([])
     const { user } = useContext(AuthContext)
@@ -41,7 +44,7 @@ const ServiceDetails = () => {
 
         // }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://healthcare-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -60,7 +63,7 @@ const ServiceDetails = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${_id}`)
+        fetch(`https://healthcare-server.vercel.app/reviews/${_id}`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [_id])

@@ -10,4 +10,8 @@ Visit My Website [HealthCare](https://github.com/facebook/create-react-app).
 * node
 * express
 * mongodb
+* react hot toast
+* react icons
+* tailwind
+* daisy ui
 

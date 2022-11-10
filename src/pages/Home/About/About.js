@@ -3,8 +3,11 @@ import person from '../../../assets/banner/banner4.jpg'
 import parts from '../../../assets/banner/banner2.jpg'
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
+import useTitle from '../../hooks/useTittle';
 
 const About = () => {
+
+    useTitle('About')
     return (
         <div className="hero my-20">
             <div className="hero-content flex-col lg:flex-row">

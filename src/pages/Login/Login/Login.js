@@ -4,10 +4,13 @@ import img from '../../../assets/login/login5.webp'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import { FaGoogle } from "react-icons/fa";
 import toast from 'react-hot-toast';
+import useTitle from '../../hooks/useTittle';
 
 
 
 const Login = () => {
+
+    useTitle("Login")
 
     const { login, googleSignIn } = useContext(AuthContext);
     const location = useLocation();
