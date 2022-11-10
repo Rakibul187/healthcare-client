@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaArrowRight } from 'react-icons/fa';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { Link } from 'react-router-dom';
@@ -27,7 +28,7 @@ const ServiceItem = ({ service }) => {
                     <span>Rating: {rating}</span>
                 </div>
                 <div className="card-actions justify-end">
-                    <Link to={`/services/${_id}`}><button className="btn btn-outline btn-warning mt-2">Details</button></Link>
+                    <Link to={`/services/${_id}`}><button className="btn btn-outline btn-warning mt-2">Details <FaArrowRight className='ml-1'></FaArrowRight></button></Link>
                 </div>
             </div>
         </div>

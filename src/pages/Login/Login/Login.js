@@ -66,11 +66,11 @@ const Login = () => {
                                 <input type="text" name='password' placeholder="password" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary" type="submit" value="Login" />
+                                <input className="btn btn-info" type="submit" value="Login" />
                             </div>
                             <div>
                                 <p className='text-center font-semibold'>Or LogIn With</p>
-                                <button onClick={handleGoogleSignIn} className="btn btn-outline btn-info mt-2 w-full"><FaGoogle /></button>
+                                <button onClick={handleGoogleSignIn} className="btn btn-outline  mt-2 w-full"><FaGoogle className='text-orange-500'></FaGoogle></button>
                             </div>
                         </form>
                         <p className='text-center'>New to HealthCare <Link className='text-orange-600 font-bold' to="/signup">Sign Up</Link> </p>

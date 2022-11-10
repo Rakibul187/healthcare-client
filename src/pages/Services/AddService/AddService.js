@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaArrowRight } from 'react-icons/fa';
 
 const AddService = () => {
 
@@ -51,7 +52,7 @@ const AddService = () => {
         <div>
             <div style={{ height: "100vh" }}>
                 <form onSubmit={handlePlaceOrder} className='mt-24 w-2/3 mx-auto'>
-                    <h2 className="text-4xl my-3 text-center text-gray-500">Tell Us Which Service Do You Want ?</h2>
+                    <h2 className="text-3xl mb-5 text-center font-bold">Tell Us Which Service Do You Want ?</h2>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
                         <input name="name" type="text" placeholder="Service Name" className="input input-ghost w-full  input-bordered" />
                         <input name="fee" type="text" placeholder="Service Fee" className="input input-ghost w-full  input-bordered" />
@@ -60,7 +61,7 @@ const AddService = () => {
                     </div>
                     <textarea name="message" className="textarea textarea-bordered h-24 mt-2 w-full" placeholder="About Service" required></textarea>
 
-                    <input className='btn btn-warning ' type="submit" value="Place Your Desire Service" />
+                    <p><button className='btn btn-warning ' type="submit">Submit Service <FaArrowRight className='ml-2'></FaArrowRight></button></p>
                 </form>
             </div>
         </div>
