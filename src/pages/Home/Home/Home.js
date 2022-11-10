@@ -1,15 +1,16 @@
 import React from 'react';
 import useTitle from '../../hooks/useTittle';
-import Services from '../../Services/Services/Services';
 import About from '../About/About';
 import Banner from '../Banner/Banner';
+import HomeService from './HomeServic/HomeService';
 
 const Home = () => {
     useTitle("Home")
+
     return (
         <div>
             <Banner></Banner>
-            <Services></Services>
+            <HomeService></HomeService>
             <About></About>
         </div>
     );

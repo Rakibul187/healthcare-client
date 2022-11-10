@@ -33,7 +33,7 @@ const Header = () => {
         }
     </>
     return (
-        <div>
+        <div >
             <div className="navbar bg-base-300 py-4 px-4">
                 <div className="navbar-start">
                     <div className="dropdown">

@@ -5,7 +5,7 @@ const Blogs = () => {
     useTitle('Blogs')
     return (
         <div>
-            <h1 className='text-4xl mx-12 mt-12 mb-6 font-bold'>You May Know More About</h1>
+            <h1 className='text-4xl mx-12 mt-12 mb-6 font-bold text-orange-500'>You May Know More About</h1>
             <div className='mx-12 mb-12 gap-5'>
                 <div className='p-5 mb-4 bg-slate-50 rounded-lg border-r-4 border-l-4'>
                     <h3 className='text-xl font-bold my-2'>Difference between SQL and NoSQL ?</h3>

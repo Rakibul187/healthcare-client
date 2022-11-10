@@ -55,7 +55,7 @@ const AddService = () => {
         <div>
             <div style={{ height: "100vh" }}>
                 <form onSubmit={handlePlaceOrder} className='mt-24 w-2/3 mx-auto'>
-                    <h2 className="text-3xl mb-5 text-center font-bold">Tell Us Which Service Do You Want ?</h2>
+                    <h2 className="text-3xl mb-5 text-center text-orange-500 font-bold">Tell me which service do you want?</h2>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
                         <input name="name" type="text" placeholder="Service Name" className="input input-ghost w-full  input-bordered" />
                         <input name="fee" type="text" placeholder="Service Fee" className="input input-ghost w-full  input-bordered" />

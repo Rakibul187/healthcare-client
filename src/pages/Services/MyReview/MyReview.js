@@ -40,7 +40,7 @@ const MyReview = () => {
         <div style={{ minHeight: "100vh" }}>
             {review.length > 0 ?
                 <>
-                    <h1 className='text-3xl font-bold mt-20 mb-5 text-orange-400'>Your Previous Review</h1>
+                    <h1 className='text-3xl font-bold mt-20 mb-5 text-orange-500'>Your Previous Review</h1>
                     <div>
                         <div className='grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-5'>
                             {review.map(rev =>
